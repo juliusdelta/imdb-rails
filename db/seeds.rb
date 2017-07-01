@@ -5,3 +5,14 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+Rake::Task['db:reset'].invoke
+
+20.times do
+  Movie.create(
+    title: Faker::Lorem.words.join(' '),
+    rating: ['NC17', 'R', 'PG13', 'PG', 'G'].sample
+  )
+end
+
+puts 'Seeded 20 records into the database'
